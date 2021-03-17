@@ -66,32 +66,35 @@ export default <cx>
                         class-tpl="cxb-tasklist {$list.className}"
                         style-bind="$list.listStyle"
                     >
-                        <DragHandle class="cxe-tasklist-header">
-                            <h2
-                                class-tpl="{$list.headerClass}"
-                                text-bind="$list.name"
-                                style-bind="$list.headerStyle"
-                                onDoubleClick="onEditList"
-                            />
-                            <a
-                                href="#"
-                                style="padding-left: 10px;"
-                                tabIndex={-1}
-                                onClick="onEditList"
-                            >
-                                &#x270e;
-                            </a>
-                            <a
-                                href="#"
-                                style="padding-left: 10px;"
-                                tabIndex={-1}
-                                onClick="showList"
-                                visible-expr="{layout.mode}=='phone' || {layout.mode}=='tablet'"
-                            >
-                                &#x2921;
-                            </a>
-        
-                        </DragHandle>
+                        <div class="cxe-tasklist-header">
+                            <DragHandle>
+                                <h2
+                                    class-tpl="{$list.headerClass}"
+                                    text-bind="$list.name"
+                                    style-bind="$list.headerStyle"
+                                    onDoubleClick="onEditList"
+                                />
+                            </DragHandle>
+                            <div class="buttons">
+                                <a
+                                    href="#"
+                                    style="padding-left: 10px;"
+                                    tabIndex={-1}
+                                    onClick="onEditList"
+                                >
+                                    &#x270e;
+                                </a>
+                                <a
+                                    href="#"
+                                    style="padding-left: 10px;"
+                                    tabIndex={-1}
+                                    onClick="showList"
+                                    visible-expr="{layout.mode}=='phone' || {layout.mode}=='tablet'"
+                                >
+                                    &#x2921;
+                                </a>
+                            </div>
+                        </div>
                     <div class="cxb-listeditor" visible-expr="{layout.mode} =='desktop' || {$list.collapsed}">
                         <ListEditor visible-expr="!!{$list.edit}"/>
                         <Menu class="cxe-tasklist-items" onKeyDown="onTaskListKeyDown" itemPadding="small">
